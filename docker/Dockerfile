@@ -27,7 +27,6 @@ RUN rm -rf /tmp/collectd-${COLLECTD_VERSION} && \
   rm -rf /var/lib/apt/lists/*
 
 COPY collectd.conf ${COLLECTD_PATH}/etc/collectd.conf
-COPY collectd.conf /etc/collectd.conf
 
 COPY start.sh /collectd_start.sh
 RUN chmod a+x /collectd_start.sh
