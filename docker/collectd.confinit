@@ -1,0 +1,49 @@
+Hostname    "collectd"
+#FQDNLookup   true
+BaseDir     "/var/lib/collectd"
+PIDFile     "/var/run/collectd.pid"
+AutoLoadPlugin true
+CollectInternalStats true
+Interval     10
+MaxReadInterval 86400
+Timeout         2
+ReadThreads     5
+WriteThreads    5
+#WriteQueueLimitHigh 1000000
+#WriteQueueLimitLow   800000
+#LoadPlugin syslog
+LoadPlugin logfile
+#LoadPlugin log_logstash
+
+<Plugin logfile>
+        LogLevel info
+        File STDOUT
+        File "/var/log/collectd.log"
+        Timestamp true
+        PrintSeverity false
+</Plugin>
+
+LoadPlugin cpu
+LoadPlugin interface
+LoadPlugin load
+LoadPlugin memory
+LoadPlugin network
+LoadPlugin uptime
+
+<Plugin network>
+        Listen "127.0.0.1" "25826"
+</Plugin>
+
+<Plugin redis>
+  <Node "pacman">
+    Host "redis
+    Port "6379"
+    Timeout 2000
+  </Node>
+</Plugin>
+
+<Plugin "csv">
+  DataDir "/var/lib/collectd/csv"
+  StoreRates true
+</Plugin>
+
