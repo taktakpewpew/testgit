@@ -1,4 +1,4 @@
-!/bin/bash
+#! /bin/bash
  set -e
  
  echo "Taking a nap, to allow network to properly set up.."
