@@ -24,6 +24,8 @@ RUN git clone https://github.com/redis/hiredis.git ${COLLECTD_PATH}/redis && \
     make && \
     make install
 
+#install stuff for rrdtools
+
 #install docker-collectd plugin to record metrics about docker containers
 RUN git clone https://github.com/lebauce/docker-collectd-plugin.git ${COLLECTD_PATH}/share/docker-collectd-plugin && \
   pip install -r ${COLLECTD_PATH}/share/docker-collectd-plugin/requirements.txt
