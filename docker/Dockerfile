@@ -19,10 +19,7 @@ RUN cd /tmp && \
   make install
 
 #install redis in order to push things to redis
-RUN git clone https://github.com/redis/hiredis.git ${COLLECTD_PATH}/redis && \
-    cd ${COLLECTD_PATH}/redis && \
-    make && \
-    make install
+RUN git clone https://github.com/redis/hiredis.git ${COLLECTD_PATH}/redis && cd ${COLLECTD_PATH}/redis && make && make install
 
 #install stuff for rrdtools
 
